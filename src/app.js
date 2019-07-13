@@ -23,6 +23,7 @@ const index = require('./../routes/index');
 const authRoute = require('./../routes/api/auth');
 const userRoutes = require('./../routes/user');
 const recipesApiRoutes = require('./../routes/api/recipes');
+const messagesApiRoutes = require('./../routes/api/messages');
 
 const logger = require('../components/log/log.controller');
 
@@ -46,6 +47,7 @@ app.use('/', index);
 app.use('/', userRoutes);
 app.use('/auth', authRoute);
 app.use('/api/v1/recipes', recipesApiRoutes);
+app.use('/api/v1/messages', messagesApiRoutes);
 
 app.use((req, res, next) => {
 	res.status(404).json({ error: 'page not found' });

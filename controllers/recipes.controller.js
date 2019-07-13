@@ -12,9 +12,7 @@ exports.index = async (req, res, next) => {
 };
 
 exports.create = (req, res, next) => {
-	console.log(req.body);
 	const { name, creator, description, type } = req.body;
-	console.log(!name || !creator || !description || !type);
 	if (name !== '' || creator !== '' || description !== '' || type !== '')
 		try {
 			const recipe = new Recipe({ name, creator, description, type });

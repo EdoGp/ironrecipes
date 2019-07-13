@@ -22,8 +22,8 @@ exports.logout = async (req, res, next) => {
 };
 exports.signup = async (req, res, next) => {
 	const bcryptSalt = 10;
-	const { username, password, email } = req.body;
-	if (username === '' || password === '') {
+	const userInfo = { ...req.body };
+	if (userInfo.username === '' || userInfo.password === '') {
 		res.status(401).json({
 			status: 'failed',
 			message: 'Please fill username and password',
@@ -31,12 +31,14 @@ exports.signup = async (req, res, next) => {
 		return;
 	}
 	try {
-		User.findOne({ username })
+		User.findOne({
+			$or: [{ username: userInfo.username }, { email: userInfo.email }],
+		})
 			.then((user) => {
 				if (user !== null) {
 					req.flash(
 						'error',
-						'Username already taken, please choose a different username',
+						'Username or email already taken, please choose a different one',
 					);
 					res.status(401).json({
 						status: 'failed',
@@ -45,8 +47,8 @@ exports.signup = async (req, res, next) => {
 					});
 				} else {
 					const salt = Number(bcrypt.genSalt(bcryptSalt));
-					const hashPass = bcrypt.hashSync(password, salt);
-					const newUser = new User({ username, password: hashPass });
+					userInfo.password = bcrypt.hashSync(userInfo.password, salt);
+					const newUser = new User(userInfo);
 					newUser.save((err) => {
 						if (err) {
 							req.flash('error', 'Something went wrong saving the user');
