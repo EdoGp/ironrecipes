@@ -36,5 +36,8 @@
 		"serve-favicon": "^2.5.0",
 		"winston": "^3.2.1",
 		"winston-express": "^0.1.1"
+	},
+	"devDependencies": {
+		"handlebars": ">=4.1.0"
 	}
 }
