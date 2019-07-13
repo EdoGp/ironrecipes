@@ -8,6 +8,25 @@ const userSchema = new Schema(
 		username: { type: String, unique: true },
 		password: { type: String, select: false },
 		googleID: { type: String },
+		recipes: { type: Schema.Types.ObjectId, ref: 'Recipe' },
+		level: {
+			type: String,
+			enum: [
+				'Dishwasher',
+				'Kitchen Porter',
+				'Commis Chef',
+				'Chef de Partie',
+				'Sous Chef',
+				'Head Chef',
+				'Executive Chef',
+			],
+		},
+		location: {
+			city: { type: String },
+			state: { type: String },
+		},
+		image: { type: String },
+		chats: { type: Schema.Types.ObjectId, ref: 'Message' },
 		email: {
 			type: String,
 			unique: true,
