@@ -34,10 +34,10 @@ exports.signup = async (req, res, next) => {
 		User.findOne({ username })
 			.then((user) => {
 				if (user !== null) {
-					// req.flash(
-					// 	'error',
-					// 	'Username already taken, please choose a different username',
-					// );
+					req.flash(
+						'error',
+						'Username already taken, please choose a different username',
+					);
 					res.status(401).json({
 						status: 'failed',
 						message:
@@ -49,7 +49,7 @@ exports.signup = async (req, res, next) => {
 					const newUser = new User({ username, password: hashPass });
 					newUser.save((err) => {
 						if (err) {
-							// req.flash('error', 'Something went wrong saving the user');
+							req.flash('error', 'Something went wrong saving the user');
 							next(err);
 						} else {
 							res.status(201).json({ status: 'success' });

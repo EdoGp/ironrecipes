@@ -1,5 +1,5 @@
 const passport = require('passport');
-const FbStrategy = require('passport-facebook').Strategy;
+// const FbStrategy = require('passport-facebook').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('./../../models/User');
 
@@ -8,7 +8,7 @@ passport.serializeUser((userFromDb, cb) => {
 });
 
 passport.deserializeUser((idFromSession, cb) => {
-	UserModel.findById(idFromSession)
+	User.findById(idFromSession)
 		.then((user) => {
 			cb(null, user);
 		})

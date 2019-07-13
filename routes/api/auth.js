@@ -9,7 +9,7 @@ router.post(
 	'/login',
 	passport.authenticate('local', {
 		successRedirect: '/',
-		failureRedirect: '/auth/login',
+		failureRedirect: '/profile',
 		failureFlash: true,
 		passReqToCallback: true,
 	}),

@@ -1,3 +1,7 @@
-exports.userLogin = (res, req, next) => {
+exports.userLogin = (req, res, next) => {
 	res.render('login');
+};
+
+exports.profile = (req, res, next) => {
+	res.render('profile');
 };
