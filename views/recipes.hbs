@@ -6,7 +6,7 @@
 </div>
 {{#if user}}
 <div class="container">
-  <form action="/api/v1/recipes" method="POST">
+  <form action="/api/v1/recipes" method="POST" enctype="multipart/form-data">
     <div class="input-field col s6">
       <label for="name">Dish name</label>
       <input type="text" name="name">
@@ -36,11 +36,10 @@
     <div class="file-field input-field">
       <div class="btn">
         <span>Browse</span>
-        <input type="file" />
+        <input type="file" name='image' />
       </div>
-
       <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload file" />
+        <input class="file-path validate" name='image' type="text" placeholder="Upload file" />
       </div>
     </div>
     <input type="hidden" id="custId" name="custId" value="{{user._id}}">

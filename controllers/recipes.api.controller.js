@@ -13,6 +13,7 @@ exports.index = async (req, res, next) => {
 
 exports.create = (req, res, next) => {
 	const { name, description, type } = req.body;
+	const file = req.file.url;
 	if (name !== '' || description !== '' || type !== '')
 		try {
 			const recipe = new Recipe({
@@ -20,13 +21,15 @@ exports.create = (req, res, next) => {
 				creator: req.user._id,
 				description,
 				type,
+				images: file,
 			});
 			recipe.save((err) => {
 				if (err) {
 					req.flash('error', 'Something went wrong saving the recipe ');
 					next(err);
 				} else {
-					res.status(201).json({ status: 'success', data: recipe });
+					res.redirect('/recipes');
+					// res.status(201).json({ status: 'success', data: recipe });
 				}
 			});
 		} catch (error) {

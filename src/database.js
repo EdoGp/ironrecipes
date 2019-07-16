@@ -4,6 +4,7 @@ module.exports.connect = () => {
 	mongoose.connect(process.env.MONGOURI, {
 		useCreateIndex: true,
 		useNewUrlParser: true,
+		useFindAndModify: false,
 	});
 	const db = mongoose.connection;
 	console.log('Database connection started...');

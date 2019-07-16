@@ -12,70 +12,14 @@
   <title>IronRecipes</title>
 </head>
 
+{{> navbar}}
+
 <body>
-  <header>
-    <nav>
-      <div class="nav-wrapper grey darken-4">
-        <a href="/" class="brand-logo">Ironrecipes</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-          <i class="material-icons">dehaze</i>
-        </a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/recipes">Recipes</a></li>
-          {{#if user}}
-          <li><a href="/logout">Logout</a></li>
-          {{else}}
-          <li><a class="waves-effect waves-light btn modal-trigger" href="#login">Login</a></li>
-          <li><a class="waves-effect waves-light btn modal-trigger" href="#signup">Sign up</a></li>
-          {{/if}}
-        </ul>
-      </div>
-    </nav>
-    <ul class="sidenav" id="mobile-demo">
-      <li><a href="/recipes">Recipes</a></li>
-      {{#if user}}
-      <li><a href="/logout">Logout</a></li>
-      {{/if}}
-      <li><a class="waves-effect waves-light btn modal-trigger" href="#login">Login</a></li>
-      <li><a class="waves-effect waves-light btn modal-trigger" href="#signup">Sign up</a></li>
-    </ul>
-
-    <div id="login" class="modal">
-      <div class="modal-content">
-        <form action="/auth/login" method="POST">
-          <label for="username-login">username</label>
-          <input type="text" name="username" id="username-login">
-          <label for="password-login">password</label>
-          <input type="password" name="password" id="password-login">
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </div>
-    <div id="signup" class="modal">
-      <div class="modal-content">
-        <form action="/auth/signup" method="POST">
-          <label for="username-signup">username</label>
-          <input type="text" name="username" id="username-signup">
-          <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-          <label for="password-signup">password</label>
-          <input type="password" name="password" id="password-signup">
-          <label for="passwordRepeat">repeat password</label>
-          <input type="password" name="password-repeat" id="password-repeat-signup">
-          <label for="email-signup">email</label>
-          <input type="email" name="email" id="email-signup">
-          <button type="submit">Signup</button>
-        </form>
-      </div>
-    </div>
-  </header>
   <main>
-
-
     {{{body}}}
     {{#if msg}}
     {{msg}}
     {{/if}}
-
     {{#if error}}
     {{error}}
     {{/if}}

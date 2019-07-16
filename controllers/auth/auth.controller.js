@@ -2,7 +2,11 @@ const bcrypt = require('bcryptjs');
 const User = require('./../../models/User');
 
 exports.profileGet = async (req, res, next) => {};
-exports.profilePut = async (req, res, next) => {};
+exports.profilePut = async (req, res, next) => {
+	req.body.image = req.file.url;
+	await User.findByIdAndUpdate(req.user._id, req.body);
+	res.redirect('/profile');
+};
 exports.logout = async (req, res, next) => {
 	if (req.user === undefined) {
 		res.redirect('/');
@@ -14,7 +18,7 @@ exports.logout = async (req, res, next) => {
 		.then(() => {
 			req.logout();
 			res.redirect('/');
-			res.json({ status: 'success' });
+			// res.json({ status: 'success' });
 		})
 		.catch((err) => {
 			next(err);

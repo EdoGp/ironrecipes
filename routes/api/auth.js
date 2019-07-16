@@ -2,6 +2,8 @@ const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 
+const multer = require('./../../components/multer/multer');
+
 const authController = require('./../../controllers/auth/auth.controller');
 
 router.get('/profile', authController.profileGet);
@@ -16,8 +18,8 @@ router.post(
 	}),
 );
 router.post('/signup', authController.signup);
-router.post('/logout', authController.logout);
-router.post('/profile', authController.profilePut);
+router.get('/logout', authController.logout);
+router.post('/profile', multer.single('image'), authController.profilePut);
 
 router.get(
 	'/google',

@@ -3,6 +3,7 @@ const Recipe = require('./../models/Recipe');
 exports.index = async (req, res, next) => {
 	try {
 		const recipes = await Recipe.find({});
+		console.log(recipes);
 		res.render('recipes', { recipes });
 	} catch (error) {
 		next(error);

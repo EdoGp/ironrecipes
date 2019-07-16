@@ -21,10 +21,10 @@ const userSchema = new Schema(
 				'Executive Chef',
 			],
 		},
-		location: {
-			city: { type: String },
-			state: { type: String },
-		},
+		// location: {
+		// 	city: { type: String },
+		// 	state: { type: String },
+		// },
 		image: { type: String },
 		chats: { type: Schema.Types.ObjectId, ref: 'Message' },
 		email: {
