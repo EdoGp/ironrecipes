@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Message = require('./../models/Message');
+const Message = require('../models/Message');
 
 exports.index = async (req, res, next) => {
 	try {

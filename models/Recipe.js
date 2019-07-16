@@ -9,7 +9,7 @@ const userSchema = new Schema(
 		cuisine: { type: String },
 		likes: { type: Number },
 		type: { type: String, enum: ['Entree', 'Appetizer', 'Soup', 'Salad'] },
-		preparation: { type: String },
+		preparation: [{ type: String }],
 		comments: [
 			{
 				user: { type: Schema.Types.ObjectId, ref: 'user' },

@@ -5,11 +5,12 @@ const router = express.Router();
 const authController = require('./../../controllers/auth/auth.controller');
 
 router.get('/profile', authController.profileGet);
+
 router.post(
 	'/login',
 	passport.authenticate('local', {
-		successRedirect: '/',
-		failureRedirect: '/profile',
+		successRedirect: '/profile',
+		failureRedirect: '/',
 		failureFlash: true,
 		passReqToCallback: true,
 	}),

@@ -10,6 +10,25 @@ const favicon = require('serve-favicon');
 
 const app = express();
 
+hbs.registerPartials(path.join(__dirname + './../views/partials'));
+
+const index = require('./../routes/index');
+const authRoute = require('./../routes/api/auth');
+const userRoutes = require('./../routes/user');
+const recipesRoutes = require('./../routes/recipes');
+const recipesApiRoutes = require('./../routes/api/recipes');
+const messagesApiRoutes = require('./../routes/api/messages');
+const logger = require('../components/log/log.controller');
+
+app.use(
+	require('node-sass-middleware')({
+		src: path.join(__dirname, '../public'),
+		dest: path.join(__dirname, '../public'),
+		sourceMap: true,
+		outputStyle: 'compressed',
+	}),
+);
+
 app.use(
 	session({
 		secret: 'our-passport-local-strategy-app',
@@ -17,15 +36,6 @@ app.use(
 		saveUninitialized: true,
 	}),
 );
-app.use(flash());
-require('./../components/passport')(app);
-const index = require('./../routes/index');
-const authRoute = require('./../routes/api/auth');
-const userRoutes = require('./../routes/user');
-const recipesApiRoutes = require('./../routes/api/recipes');
-const messagesApiRoutes = require('./../routes/api/messages');
-
-const logger = require('../components/log/log.controller');
 
 app.set('views', path.join(__dirname, './../views'));
 app.set('view engine', 'hbs');
@@ -34,6 +44,9 @@ app.use(favicon(path.join(__dirname, './../public', 'images', 'favicon.ico')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(flash());
+require('./../components/passport')(app);
 
 app.use((req, res, next) => {
 	res.locals.user = req.user;
@@ -46,6 +59,7 @@ app.use(logger);
 app.use('/', index);
 app.use('/', userRoutes);
 app.use('/auth', authRoute);
+app.use('/recipes', recipesRoutes);
 app.use('/api/v1/recipes', recipesApiRoutes);
 app.use('/api/v1/messages', messagesApiRoutes);
 

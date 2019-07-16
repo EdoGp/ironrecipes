@@ -1,0 +1,51 @@
+<h1>Recipes</h1>
+<div class="row">
+  {{#each recipes}}
+  {{> recipeCardPartial this}}
+  {{/each}}
+</div>
+{{#if user}}
+<div class="container">
+  <form action="/api/v1/recipes" method="POST">
+    <div class="input-field col s6">
+      <label for="name">Dish name</label>
+      <input type="text" name="name">
+    </div>
+    <div class="input-field col s6">
+      <select name="cousine">
+        <option value="" disabled selected>Cousine</option>
+        <option value="American">American</option>
+        <option value="French">French</option>
+        <option value="Thai">Thai</option>
+        <option value="Latin">Latin</option>
+      </select>
+    </div>
+    <div class="input-field col s6">
+      <select name="type">
+        <option value="" disabled selected>Dish type</option>
+        <option value="Entree">Entree</option>
+        <option value="Appetizer">Appetizer</option>
+        <option value="Soup">Soup</option>
+        <option value="Salad">Salad</option>
+      </select>
+    </div>
+    <div class="input-field">
+      <label for="preparation">Preparation</label>
+      <textarea id="textarea1" class="materialize-textarea"></textarea>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Browse</span>
+        <input type="file" />
+      </div>
+
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload file" />
+      </div>
+    </div>
+    <input type="hidden" id="custId" name="custId" value="{{user._id}}">
+    <button class="btn" type="submit">Create Recipe</button>
+  </form>
+  {{/if}}
+
+</div>

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const recipesController = require('./../../controllers/recipes.controller');
+const recipesController = require('../../controllers/recipes.api.controller');
 const loggedin = require('./../../middlewares/auth/loggedin');
 
 router.get('/', recipesController.index);

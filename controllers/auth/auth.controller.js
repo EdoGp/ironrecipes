@@ -8,12 +8,12 @@ exports.logout = async (req, res, next) => {
 		res.redirect('/');
 		return;
 	}
-
 	req.user.set({ loggedIn: false });
 	req.user
 		.save()
 		.then(() => {
 			req.logout();
+			res.redirect('/');
 			res.json({ status: 'success' });
 		})
 		.catch((err) => {
@@ -55,6 +55,7 @@ exports.signup = async (req, res, next) => {
 							next(err);
 						} else {
 							res.status(201).json({ status: 'success' });
+							res.redirect('/');
 							req.login(newUser, (err) => {
 								if (err) {
 									next(err);

@@ -9,6 +9,7 @@ const messageSchema = new Schema(
 			{
 				message: { type: String },
 				timestamp: { type: Date, default: Date.now },
+				user: { type: Schema.Types.ObjectId, ref: 'user' },
 			},
 		],
 	},
