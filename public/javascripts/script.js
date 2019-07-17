@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
 	M.AutoInit();
+
+	document.getElementById('recipe-edit').onclick = () => {
+		console.log('test');
+	};
 	// let elems = document.querySelectorAll('.modal');
 	// let instances = M.Modal.init(elems, {});
 

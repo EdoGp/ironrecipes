@@ -16,6 +16,7 @@ const index = require('./../routes/index');
 const authRoute = require('./../routes/api/auth');
 const userRoutes = require('./../routes/user');
 const recipesRoutes = require('./../routes/recipes');
+const messagesRoutes = require('./../routes/messages');
 const recipesApiRoutes = require('./../routes/api/recipes');
 const messagesApiRoutes = require('./../routes/api/messages');
 const logger = require('../components/log/log.controller');
@@ -60,6 +61,7 @@ app.use('/', index);
 app.use('/', userRoutes);
 app.use('/auth', authRoute);
 app.use('/recipes', recipesRoutes);
+app.use('/messages', messagesRoutes);
 app.use('/api/v1/recipes', recipesApiRoutes);
 app.use('/api/v1/messages', messagesApiRoutes);
 

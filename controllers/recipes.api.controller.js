@@ -91,7 +91,9 @@ exports.update = async (req, res, next) => {
 	if (mongoose.Types.ObjectId.isValid(req.params.id)) {
 		try {
 			const documents = await Recipe.findByIdAndUpdate(req.params.id, req.body);
-			res.status(200).json(documents);
+			res.redirect(`/recipes/${req.params.id}`);
+			console.log('something is getting changed');
+			// res.status(200).json(documents);
 		} catch (error) {
 			console.log(error);
 			next(error);

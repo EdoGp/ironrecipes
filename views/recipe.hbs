@@ -1,27 +1,84 @@
 <h1>{{recipe.name}}</h1>
-
-<div class="user-info" {{!-- class="col s12 m8 offset-m2 l6 offset-l3" --}}>
+<p>{{recipe}}</p>
+<div class="user-info">
+  <h5>Created by:</h5>
   <div class="card-panel grey lighten-5 z-depth-1 user-info__row">
     <div class="row valign-wrapper user-info__row__card">
       <div class="col s2">
         <img img src="{{this.diffuse}}" alt="user profile image" onerror="this.src='/images/user.jpg';"
           class="circle responsive-img">
       </div>
-      <div class="col s10">
+      <div class="col s8">
         <span class="black-text">
-          <p class="user-info__row__card__text">Created by: {{recipe.creator.username}}</p>
-          <p class="user-info__row__card__text">Created by: {{recipe.creator.email}}</p>
+          <p class="user-info__row__card__text">By: {{recipe.creator.username}}</p>
+          <p class="user-info__row__card__text">{{recipe.creator.email}}</p>
         </span>
+      </div>
+      <div class="col">
+        {{#if user}}
+        <form action="/messages?user={{recipe.creator._id}}" method="GET">
+          <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Message
+            <i class="material-icons right Small">chat</i>
+          </button>
+        </form>
+        {{/if}}
       </div>
     </div>
   </div>
 </div>
 
-<div>
-  <ul class="collection">
-    <li class="collection-item">Alvin</li>
-    <li class="collection-item">Alvin</li>
-    <li class="collection-item">Alvin</li>
-    <li class="collection-item">Alvin</li>
-  </ul>
+<div class="container">
+  <p>Likes:{{recipe.likes}}</p>
+  <img src="{{recipe.images.[0]}}" alt="">
+  <p>Type: {{recipe.type}}</p>
+  <p>Cuisine: {{recipe.cuisine}}</p>
+  <p>Preparation: {{recipe.preparation}}</p>
+  <p>Comments: {{recipe.comments}}</p>
 </div>
+{{#if recipe.creator.owner}}
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large light-blue accent-2" id='recipe-edit'>
+    <i class="large material-icons">mode_edit</i>
+  </a>
+</div>
+<div class="container">
+  <form action="/api/v1/recipes/{{recipe._id}}/update" method="POST" enctype="multipart/form-data">
+    <div class="input-field col s6">
+      <input type="text" name="name" value="{{recipe.name}}">
+      <label for="name">Dish name</label>
+    </div>
+    <div class="input-field col s6">
+      <select name="cousine">
+        <option value="" disabled selected>Cousine</option>
+        <option value="American">American</option>
+        <option value="French">French</option>
+        <option value="Thai">Thai</option>
+        <option value="Latin">Latin</option>
+      </select>
+    </div>
+    <div class="input-field col s6">
+      <select name="type">
+        <option value="" disabled selected>Dish type</option>
+        <option value="Entree">Entree</option>
+        <option value="Appetizer">Appetizer</option>
+        <option value="Soup">Soup</option>
+        <option value="Salad">Salad</option>
+      </select>
+    </div>
+    <div class="input-field">
+      <label for="preparation">Preparation</label>
+      <textarea name='preparation' id="textarea1" class="materialize-textarea">{{recipe.preparation}}</textarea>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>Browse</span>
+        <input type="file" name='image' value={{recipe.image}} />
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" name='image' type="text" placeholder="Upload file" />
+      </div>
+    </div>
+    <input type="hidden" id="custId" name="custId" value="{{user._id}}">
+    <button class="btn" type="submit">Update Recipe</button>
+  </form>
+  {{/if}}
