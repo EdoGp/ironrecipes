@@ -71,35 +71,35 @@ passport.deserializeUser((idFromSession, cb) => {
 // ); // passport.use()
 
 // Login with Google
-passport.use(
-	new GoogleStrategy(
-		{
-			clientID: process.env.GOOGLE_ID,
-			clientSecret: process.env.GOOGLE_SECRET,
-			callbackURL: '/google/success',
-			proxy: true,
-		},
-		(accessToken, refreshToken, profile, callback) => {
-			UserModel.findOne({ googleID: profile.id })
-				.then((userFromDb) => {
-					if (userFromDb) {
-						callback(null, userFromDb);
-						return;
-					}
-					const theUser = new UserModel({
-						googleID: profile.id,
-						email: profile._json.email,
-					});
-					return theUser.save();
-				})
-				.then((newUser) => {
-					// tell Passport to use the new user account
-					callback(null, newUser);
-				})
-				// tell Passport there was an error in the login process
-				.catch((err) => {
-					callback(err);
-				});
-		},
-	), // new GoogleStrategy()
-); // passport.use()
+// passport.use(
+// 	new GoogleStrategy(
+// 		{
+// 			clientID: process.env.GOOGLE_ID,
+// 			clientSecret: process.env.GOOGLE_SECRET,
+// 			callbackURL: '/google/success',
+// 			proxy: true,
+// 		},
+// 		(accessToken, refreshToken, profile, callback) => {
+// 			UserModel.findOne({ googleID: profile.id })
+// 				.then((userFromDb) => {
+// 					if (userFromDb) {
+// 						callback(null, userFromDb);
+// 						return;
+// 					}
+// 					const theUser = new UserModel({
+// 						googleID: profile.id,
+// 						email: profile._json.email,
+// 					});
+// 					return theUser.save();
+// 				})
+// 				.then((newUser) => {
+// 					// tell Passport to use the new user account
+// 					callback(null, newUser);
+// 				})
+// 				// tell Passport there was an error in the login process
+// 				.catch((err) => {
+// 					callback(err);
+// 				});
+// 		},
+// 	), // new GoogleStrategy()
+// ); // passport.use()
