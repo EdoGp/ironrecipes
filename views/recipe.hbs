@@ -1,5 +1,4 @@
 <h1>{{recipe.name}}</h1>
-<p>{{recipe}}</p>
 <div class="user-info">
   <h5>Created by:</h5>
   <div class="card-panel grey lighten-5 z-depth-1 user-info__row">
@@ -16,11 +15,11 @@
       </div>
       <div class="col">
         {{#if user}}
-        <form action="/messages?user={{recipe.creator._id}}" method="GET">
+        <a href="/messages/?user={{recipe.creator._id}}">
           <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Message
             <i class="material-icons right Small">chat</i>
           </button>
-        </form>
+        </a>
         {{/if}}
       </div>
     </div>
@@ -33,7 +32,7 @@
   <p>Type: {{recipe.type}}</p>
   <p>Cuisine: {{recipe.cuisine}}</p>
   <p>Preparation: {{recipe.preparation}}</p>
-  <p>Comments: {{recipe.comments}}</p>
+  <p>Ingredients: {{recipe.ingredients}}</p>
 </div>
 {{#if recipe.creator.owner}}
 <div class="fixed-action-btn">
@@ -64,6 +63,10 @@
         <option value="Soup">Soup</option>
         <option value="Salad">Salad</option>
       </select>
+    </div>
+    <div class="input-field">
+      <label for="ingredients">Ingredients</label>
+      <textarea name='ingredients' id="textarea1" class="materialize-textarea">{{recipe.ingredients}}</textarea>
     </div>
     <div class="input-field">
       <label for="preparation">Preparation</label>

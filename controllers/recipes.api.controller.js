@@ -92,7 +92,6 @@ exports.update = async (req, res, next) => {
 		try {
 			const documents = await Recipe.findByIdAndUpdate(req.params.id, req.body);
 			res.redirect(`/recipes/${req.params.id}`);
-			console.log('something is getting changed');
 			// res.status(200).json(documents);
 		} catch (error) {
 			console.log(error);
