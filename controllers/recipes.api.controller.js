@@ -12,7 +12,7 @@ exports.index = async (req, res, next) => {
 };
 
 exports.create = (req, res, next) => {
-	const { name, description, type } = req.body;
+	const { name, description, type, preparation, ingredients } = req.body;
 	const file = req.file.url;
 	if (name !== '' || description !== '' || type !== '')
 		try {
@@ -22,6 +22,8 @@ exports.create = (req, res, next) => {
 				description,
 				type,
 				images: file,
+				ingredients,
+				preparation,
 			});
 			recipe.save((err) => {
 				if (err) {

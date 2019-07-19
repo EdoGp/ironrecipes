@@ -58,7 +58,7 @@ exports.signup = async (req, res, next) => {
 							req.flash('error', 'Something went wrong saving the user');
 							next(err);
 						} else {
-							res.status(201).json({ status: 'success' });
+							// res.status(201).json({ status: 'success' });
 							res.redirect('/');
 							req.login(newUser, (err) => {
 								if (err) {

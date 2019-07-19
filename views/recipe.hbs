@@ -1,10 +1,10 @@
 <div class="container recipe-container">
   <div class="row">
     <div class="row">
-      <div class="col s6 row">
+      <div class="col s12 m6 row">
         <img class="col s12" src="{{recipe.images.[0]}}" alt="{{recipe.name}} dish picture">
       </div>
-      <div class="col s6">
+      <div class="col s12 m6">
         <h1>{{recipe.name}}</h1>
         <div class="user-info">
           <div class="card-panel grey lighten-5 z-depth-1 user-info__row">
@@ -19,15 +19,6 @@
                   <p class="user-info__row__card__text">{{recipe.creator.email}}</p>
                 </span>
               </div>
-              {{!-- <div class="col">
-                {{#if user}}
-                <a href="/messages/?user={{recipe.creator._id}}">
-                  <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Message
-                    <i class="material-icons right Small">chat</i>
-                  </button>
-                </a>
-                {{/if}}
-              </div> --}}
             </div>
           </div>
         </div>
@@ -44,7 +35,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col s6">
+      <div class="col s12 m6">
         <h4>Preparation</h4>
         <ul>
           {{#each recipe.ingredientsList}}
@@ -52,7 +43,7 @@
           {{/each }}
         </ul>
       </div>
-      <div class="col s6">
+      <div class="col s12 m6">
         <h4>Ingredients</h4>
         <ul>
           {{#each recipe.steps}}
