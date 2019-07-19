@@ -1,15 +1,22 @@
 <div class="col s8 m4">
-  <div class="card horizontal">
+  <div class="card horizontal hoverable">
     <div class="card-image">
-      <img src="{{images.[0]}}">
+      <img src="{{images.[0]}}" class="image__card center-align">
     </div>
     <div class="card-stacked">
       <div class="card-content">
-        <ul>
-          {{#each ingredientsList}}
+        <h5>{{name}}</h5>
+        {{!-- {{cousine}} --}}
+        {{!-- <ul>
+          <li>{{ingredientsList.[0]}}</li>
+          <li>{{ingredientsList.[1]}}</li>
+          <li>{{ingredientsList.[2]}}</li>
+          {{!-- {{#each ingredientsList}}
           <li>{{this}}</li>
-          {{/each}}
-        </ul>
+          <li>{{this}}</li>
+          <li>{{this}}</li>
+          {{/each}} --}}
+        {{!-- </ul> --}}
       </div>
       <div class="card-action">
         <a href="/recipes/{{_id}}">Recipe Details</a>

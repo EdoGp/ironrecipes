@@ -1,6 +1,7 @@
 html,
 body {
-	font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
 	padding: 0;
 	margin: 0;
 	display: flex;
@@ -39,11 +40,56 @@ footer {
 	color: #b71c1c;
 }
 
-$sec-color: #8a8f99;
-$pri-color: #232731;
-// $bg: #ffe566;
-$bg: #ffffff;
-$color-yolk: #f9d010;
+.image__card {
+	max-height: 180px;
+}
+.card-content {
+	max-height: 175px;
+}
+
+.navbar-logo {
+	max-height: 50px;
+	-webkit-filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
+	filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white)
+		drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white);
+}
+nav .brand-logo {
+	display: flex !important;
+	align-content: center;
+	align-items: center;
+	margin-left: 20px;
+}
+
+.slider-text {
+	max-width: 600px;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 10px;
+}
+
+.user-update-info {
+	margin: 20px;
+}
+
+.form-center-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.username-info {
+	text-align: center;
+}
+.recipe-container {
+	margin-top: 50px;
+}
+.recipe-edit-container {
+	margin-bottom: 30px;
+}
+// $sec-color: #8a8f99;
+// $pri-color: #232731;
+// // $bg: #ffe566;
+// $bg: #ffffff;
+// $color-yolk: #f9d010;
 
 // body {
 // 	background-color: $bg;

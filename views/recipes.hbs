@@ -5,29 +5,31 @@
   {{/each}}
 </div>
 {{#if user}}
-<div class="container">
-  <form action="/api/v1/recipes" method="POST" enctype="multipart/form-data">
-    <div class="input-field col s6">
-      <label for="name">Dish name</label>
-      <input type="text" name="name">
-    </div>
-    <div class="input-field col s6">
-      <select name="cousine">
-        <option value="" disabled selected>Cousine</option>
-        <option value="American">American</option>
-        <option value="French">French</option>
-        <option value="Thai">Thai</option>
-        <option value="Latin">Latin</option>
-      </select>
-    </div>
-    <div class="input-field col s6">
-      <select name="type">
-        <option value="" disabled selected>Dish type</option>
-        <option value="Entree">Entree</option>
-        <option value="Appetizer">Appetizer</option>
-        <option value="Soup">Soup</option>
-        <option value="Salad">Salad</option>
-      </select>
+<div class="container row">
+  <form class='recipe-update-info col s12' action="/api/v1/recipes" method="POST" enctype="multipart/form-data">
+    <div class="row">
+      <div class="input-field col s4 tooltipped" data-tooltip="Type a name for the recipe">
+        <label for="name">Dish name</label>
+        <input type="text" name="name">
+      </div>
+      <div class="input-field col s4">
+        <select name="cousine">
+          <option value="" disabled selected>Cousine</option>
+          <option value="American">American</option>
+          <option value="French">French</option>
+          <option value="Thai">Thai</option>
+          <option value="Latin">Latin</option>
+        </select>
+      </div>
+      <div class="input-field col s4">
+        <select name="type">
+          <option value="" disabled selected>Dish type</option>
+          <option value="Entree">Entree</option>
+          <option value="Appetizer">Appetizer</option>
+          <option value="Soup">Soup</option>
+          <option value="Salad">Salad</option>
+        </select>
+      </div>
     </div>
     <div class="input-field">
       <label for="ingredients">Ingredients</label>
@@ -40,7 +42,7 @@
         data-tooltip="Separate each instruction with an enter"></textarea>
     </div>
     <div class="file-field input-field">
-      <div class="btn">
+      <div class="btn blue-grey lighten-1">
         <span>Browse</span>
         <input type="file" name='image' />
       </div>
@@ -49,7 +51,9 @@
       </div>
     </div>
     <input type="hidden" id="custId" name="custId" value="{{user._id}}">
-    <button class="btn" type="submit">Create Recipe</button>
+    <div class="form-center-button">
+      <button class="btn blue accent-3" type="submit">Create Recipe</button>
+    </div>
   </form>
   {{/if}}
 

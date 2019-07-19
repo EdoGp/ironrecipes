@@ -1,37 +1,68 @@
-<h1>{{recipe.name}}</h1>
-<div class="user-info">
-  <div class="card-panel grey lighten-5 z-depth-1 user-info__row">
-    <div class="row valign-wrapper user-info__row__card">
-      <div class="col s2">
-        <img img src="{{this.diffuse}}" alt="user profile image" onerror="this.src='/images/user.jpg';"
-          class="circle responsive-img">
+<div class="container recipe-container">
+  <div class="row">
+    <div class="row">
+      <div class="col s6 row">
+        <img class="col s12" src="{{recipe.images.[0]}}" alt="{{recipe.name}} dish picture">
       </div>
-      <div class="col s8">
-        <span class="black-text">
-          <p class="user-info__row__card__text">Created by: {{recipe.creator.username}}</p>
-          <p class="user-info__row__card__text">{{recipe.creator.email}}</p>
-        </span>
+      <div class="col s6">
+        <h1>{{recipe.name}}</h1>
+        <div class="user-info">
+          <div class="card-panel grey lighten-5 z-depth-1 user-info__row">
+            <div class="row valign-wrapper user-info__row__card">
+              <div class="col s2">
+                <img img src="{{this.image}}" alt="user profile image" onerror="this.src='/images/user.jpg';"
+                  class="circle responsive-img">
+              </div>
+              <div class="col s8">
+                <span class="black-text">
+                  <p class="user-info__row__card__text">Created by: {{recipe.creator.username}}</p>
+                  <p class="user-info__row__card__text">{{recipe.creator.email}}</p>
+                </span>
+              </div>
+              {{!-- <div class="col">
+                {{#if user}}
+                <a href="/messages/?user={{recipe.creator._id}}">
+                  <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Message
+                    <i class="material-icons right Small">chat</i>
+                  </button>
+                </a>
+                {{/if}}
+              </div> --}}
+            </div>
+          </div>
+        </div>
       </div>
-      {{!-- <div class="col">
-        {{#if user}}
-        <a href="/messages/?user={{recipe.creator._id}}">
-          <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Message
-            <i class="material-icons right Small">chat</i>
-          </button>
-        </a>
-        {{/if}}
-      </div> --}}
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <h3>Type:</h3>
+        <p>{{recipe.type}}</p>
+      </div>
+      <div class='col s6'>
+        <h3>Cuisine:</h3>
+        <p>{{recipe.cuisine}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <h4>Preparation</h4>
+        <ul>
+          {{#each recipe.ingredientsList}}
+          <li>{{this}}</li>
+          {{/each }}
+        </ul>
+      </div>
+      <div class="col s6">
+        <h4>Ingredients</h4>
+        <ul>
+          {{#each recipe.steps}}
+          <li>{{this}}</li>
+          {{/each }}
+        </ul>
+        </p>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="container">
-  {{!-- <p>Likes:{{recipe.likes}}</p> --}}
-  <img src="{{recipe.images.[0]}}" alt="">
-  <p>Type: {{recipe.type}}</p>
-  <p>Cuisine: {{recipe.cuisine}}</p>
-  <p>Preparation: {{recipe.preparation}}</p>
-  <p>Ingredients: {{recipe.ingredients}}</p>
 </div>
 {{#if recipe.creator.owner}}
 <div class="fixed-action-btn">
@@ -39,29 +70,31 @@
     <i class="large material-icons">mode_edit</i>
   </a>
 </div>
-<div class="container">
+<div class="container recipe-edit-container">
   <form action="/api/v1/recipes/{{recipe._id}}/update" method="POST" enctype="multipart/form-data">
-    <div class="input-field col s6">
-      <input type="text" name="name" value="{{recipe.name}}">
-      <label for="name">Dish name</label>
-    </div>
-    <div class="input-field col s6">
-      <select name="cousine">
-        <option value="" disabled selected>Cousine</option>
-        <option value="American">American</option>
-        <option value="French">French</option>
-        <option value="Thai">Thai</option>
-        <option value="Latin">Latin</option>
-      </select>
-    </div>
-    <div class="input-field col s6">
-      <select name="type">
-        <option value="" disabled selected>Dish type</option>
-        <option value="Entree">Entree</option>
-        <option value="Appetizer">Appetizer</option>
-        <option value="Soup">Soup</option>
-        <option value="Salad">Salad</option>
-      </select>
+    <div class="row">
+      <div class="input-field col s4">
+        <input type="text" name="name" value="{{recipe.name}}">
+        <label for="name">Dish name</label>
+      </div>
+      <div class="input-field col s4">
+        <select name="cousine">
+          <option value="" disabled selected>Cousine</option>
+          <option value="American">American</option>
+          <option value="French">French</option>
+          <option value="Thai">Thai</option>
+          <option value="Latin">Latin</option>
+        </select>
+      </div>
+      <div class="input-field col s4">
+        <select name="type">
+          <option value="" disabled selected>Dish type</option>
+          <option value="Entree">Entree</option>
+          <option value="Appetizer">Appetizer</option>
+          <option value="Soup">Soup</option>
+          <option value="Salad">Salad</option>
+        </select>
+      </div>
     </div>
     <div class="input-field">
       <label for="ingredients">Ingredients</label>
@@ -72,7 +105,7 @@
       <textarea name='preparation' id="textarea1" class="materialize-textarea">{{recipe.preparation}}</textarea>
     </div>
     <div class="file-field input-field">
-      <div class="btn">
+      <div class="btn blue-grey lighten-1">
         <span>Browse</span>
         <input type="file" name='image' value={{recipe.image}} />
       </div>
@@ -81,6 +114,8 @@
       </div>
     </div>
     <input type="hidden" id="custId" name="custId" value="{{user._id}}">
-    <button class="btn" type="submit">Update Recipe</button>
+    <div class='form-center-button'>
+      <button class="btn blue accent-3" type="submit">Update Recipe</button>
+    </div>
   </form>
   {{/if}}

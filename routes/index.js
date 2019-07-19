@@ -13,6 +13,8 @@ router.get('/', async (req, res, next) => {
 		return {
 			images: appetizer.images,
 			owner: appetizer.owner,
+			type: appetizer.type,
+			cousine: appetizer.cousine,
 			_id: appetizer._id,
 			name: appetizer.name,
 			ingredientsList: appetizer.ingredients.split('\r\n'),
@@ -20,6 +22,8 @@ router.get('/', async (req, res, next) => {
 	});
 	entrees = await entrees.map((entree) => {
 		return {
+			type: entree.type,
+			cousine: entree.cousine,
 			images: entree.images,
 			owner: entree.owner,
 			_id: entree._id,
@@ -29,6 +33,8 @@ router.get('/', async (req, res, next) => {
 	});
 	soupsAndSalads = await soupsAndSalads.map((salad) => {
 		return {
+			type: salad.type,
+			cousine: salad.cousine,
 			images: salad.images,
 			owner: salad.owner,
 			_id: salad._id,

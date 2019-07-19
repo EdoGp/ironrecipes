@@ -1,48 +1,61 @@
 <div class="container">
-  <h1>{{user.username}} Profile info</h1>
-  <img src="{{user.image}}" alt="{{user.username}} profile picture" onerror="this.src='https://picsum.photos/300';">
-  <form action="/auth/profile" class="col s12" method="POST" enctype="multipart/form-data">
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="first_name" type="text" name='firstName' class="validate" value={{user.firstName}}>
-        <label for="first_name">Name</label>
-      </div>
-      <div class="input-field col s6">
-        <input name="familyName" id="last_name" type="text" class="validate" value={{user.familyName}}>
-        <label for="last_name">Last Name</label>
-      </div>
-      <div class="input-field col s6">
-        <input disabled name="familyName" id="last_name" type="text" class="validate" value={{user.username}}>
-        <label for="last_name">username</label>
-      </div>
-      <div class="input-field col s6">
-        <select name='level'>
-          <option value="" disabled selected>Choose your option</option>
-          <option value='Dishwasher'>Dishwasher</option>
-          <option value='Kitchen Porter'>Kitchen Porter</option>
-          <option value='Commis Chef'>Commis Chef</option>
-          <option value='Chef de Partie'>Chef de Partie</option>
-          <option value='Sous Chef'>Sous Chef</option>
-          <option value='Head Chef'>Head Chef</option>
-          <option value='Executive Chef'>Executive Chef</option>
-        </select>
-        <label>Level</label>
-      </div>
-      <div class="input-field col s6">
-        <input name="email" id="last_name" type="text" class="validate" value={{user.email}}>
-        <label for="last_name">Email</label>
-      </div>
-      <div class="file-field input-field col s6">
-        <div class="btn">
-          <span>Browse</span>
-          <input type="file" name='image' />
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" name='image' type="text" placeholder="Upload file" />
-        </div>
-      </div>
 
+  <div class="row">
+    <div class="col s6">
+      <h1 class='username-info'>{{user.username}}</h1>
+      <h2 class='username-info'>Profile info</h2>
     </div>
-    <button class="btn">Update Profile</button>
+    <div class="col s6">
+      <img src="{{user.image}}" alt="{{user.username}} profile picture" onerror="this.src='https://picsum.photos/300';">
+    </div>
+  </div>
+  <form class="user-update-info col s12" action="/auth/profile" method="POST" enctype="multipart/form-data">
+    <div class="row valign-wrapper">
+      <div class="col s6">
+        <div class="input-field col s12">
+          <input id="first_name" type="text" name='firstName' class="validate" value={{user.firstName}}>
+          <label for="first_name">Name</label>
+        </div>
+        <div class="input-field col s12">
+          <input name="familyName" id="last_name" type="text" class="validate" value={{user.familyName}}>
+          <label for="last_name">Last Name</label>
+        </div>
+        <div class="input-field col s12">
+          <input disabled name="familyName" id="last_name" type="text" class="validate" value={{user.username}}>
+          <label for="last_name">username</label>
+        </div>
+      </div>
+      <div class="col s6">
+        <div class="input-field col s12">
+          <select name='level'>
+            <option value="" disabled selected>Choose your option</option>
+            <option value='Dishwasher'>Dishwasher</option>
+            <option value='Kitchen Porter'>Kitchen Porter</option>
+            <option value='Commis Chef'>Commis Chef</option>
+            <option value='Chef de Partie'>Chef de Partie</option>
+            <option value='Sous Chef'>Sous Chef</option>
+            <option value='Head Chef'>Head Chef</option>
+            <option value='Executive Chef'>Executive Chef</option>
+          </select>
+          <label>Level</label>
+        </div>
+        <div class="input-field col s12">
+          <input name="email" id="last_name" type="text" class="validate" value={{user.email}}>
+          <label for="last_name">Email</label>
+        </div>
+        <div class="file-field input-field col s12">
+          <div class="btn blue-grey lighten-1">
+            <span>Browse</span>
+            <input type="file" name='image' />
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" name='image' type="text" placeholder="Upload file" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-center-button">
+      <button class="btn blue accent-3 ">Update Profile</button>
+    </div>
   </form>
 </div>

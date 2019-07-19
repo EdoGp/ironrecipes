@@ -1,7 +1,9 @@
 <header>
   <nav>
     <div class="nav-wrapper grey darken-4">
-      <a href="/" class="brand-logo">Ironrecipes</a>
+      <a href="/" class="brand-logo">
+        <img src="/images/logo.png" alt="Ironrecipes Logo" class="navbar-logo ">
+        Ironrecipes</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger">
         <i class="material-icons">dehaze</i>
       </a>
@@ -9,7 +11,7 @@
         <li><a href="/recipes">Recipes</a></li>
         {{#if user}}
         <li><a href="/profile">Profile</a></li>
-        <li><a href="/messages">Messages</a></li>
+        {{!-- <li><a href="/messages">Messages</a></li> --}}
         <li><a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="/auth/logout">Logout</a>
         </li>
         {{else}}
