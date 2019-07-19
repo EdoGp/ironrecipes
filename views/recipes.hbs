@@ -10,7 +10,7 @@
     <div class="row">
       <div class="input-field col s4 tooltipped" data-tooltip="Type a name for the recipe">
         <label for="name">Dish name</label>
-        <input type="text" name="name">
+        <input type="text" name="name" required>
       </div>
       <div class="input-field col s4">
         <select name="cousine">
@@ -33,18 +33,18 @@
     </div>
     <div class="input-field">
       <label for="ingredients">Ingredients</label>
-      <textarea name='ingredients' id="textarea1" class="materialize-textarea tooltipped"
+      <textarea name='ingredients' id="textarea1" class="materialize-textarea tooltipped" required
         data-tooltip="Separate each ingredient with an enter"></textarea>
     </div>
     <div class="input-field">
       <label for="preparation">Preparation</label>
-      <textarea name='preparation' id="textarea1" class="materialize-textarea tooltipped"
+      <textarea name='preparation' id="textarea1" class="materialize-textarea tooltipped" required
         data-tooltip="Separate each instruction with an enter"></textarea>
     </div>
     <div class="file-field input-field">
       <div class="btn blue-grey lighten-1">
         <span>Browse</span>
-        <input type="file" name='image' />
+        <input type="file" name='image' required />
       </div>
       <div class="file-path-wrapper">
         <input class="file-path validate" name='image' type="text" placeholder="Upload file" />

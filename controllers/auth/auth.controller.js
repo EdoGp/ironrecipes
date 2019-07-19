@@ -3,7 +3,9 @@ const User = require('./../../models/User');
 
 exports.profileGet = async (req, res, next) => {};
 exports.profilePut = async (req, res, next) => {
-	req.body.image = req.file.url;
+	if (req.file) {
+		req.body.image = req.file.url;
+	}
 	await User.findByIdAndUpdate(req.user._id, req.body);
 	res.redirect('/profile');
 };
