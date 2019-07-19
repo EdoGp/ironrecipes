@@ -59,7 +59,6 @@ exports.signup = async (req, res, next) => {
 							next(err);
 						} else {
 							// res.status(201).json({ status: 'success' });
-							res.redirect('/');
 							req.login(newUser, (err) => {
 								if (err) {
 									next(err);
@@ -67,6 +66,7 @@ exports.signup = async (req, res, next) => {
 									newUser.set({ loggedIn: true });
 								}
 							});
+							res.redirect('/');
 						}
 					});
 				}
