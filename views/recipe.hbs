@@ -1,6 +1,5 @@
 <h1>{{recipe.name}}</h1>
 <div class="user-info">
-  <h5>Created by:</h5>
   <div class="card-panel grey lighten-5 z-depth-1 user-info__row">
     <div class="row valign-wrapper user-info__row__card">
       <div class="col s2">
@@ -9,11 +8,11 @@
       </div>
       <div class="col s8">
         <span class="black-text">
-          <p class="user-info__row__card__text">By: {{recipe.creator.username}}</p>
+          <p class="user-info__row__card__text">Created by: {{recipe.creator.username}}</p>
           <p class="user-info__row__card__text">{{recipe.creator.email}}</p>
         </span>
       </div>
-      <div class="col">
+      {{!-- <div class="col">
         {{#if user}}
         <a href="/messages/?user={{recipe.creator._id}}">
           <button class="btn waves-effect waves-light btn-small" type="submit" name="action">Message
@@ -21,13 +20,13 @@
           </button>
         </a>
         {{/if}}
-      </div>
+      </div> --}}
     </div>
   </div>
 </div>
 
 <div class="container">
-  <p>Likes:{{recipe.likes}}</p>
+  {{!-- <p>Likes:{{recipe.likes}}</p> --}}
   <img src="{{recipe.images.[0]}}" alt="">
   <p>Type: {{recipe.type}}</p>
   <p>Cuisine: {{recipe.cuisine}}</p>

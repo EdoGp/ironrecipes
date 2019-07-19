@@ -6,11 +6,21 @@
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">{{name}}<i
           class="material-icons right">more_vert</i></span>
-      <p><a href="/recipes/{{_id}}">Recipe Details</a></p>
+      <p><a href="/recipes/{{_id}}">Recipe Details</a>
+        {{#if owner}}
+        <a href="/api/v1/recipes/{{_id}}/delete" class='right-align'>
+          <i class="material-icons delete-button">remove_circle</i>
+        </a>
+        {{/if}}
+      </p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">{{name}}<i class="material-icons right">close</i></span>
-      <p>{{description}}</p>
+      <ul>
+        {{#each ingredientsList}}
+        <li>{{this}}</li>
+        {{/each}}
+      </ul>
     </div>
   </div>
 </div>

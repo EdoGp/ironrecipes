@@ -21,6 +21,6 @@ router.post(
 	multerMiddleware.single('image'),
 	recipesController.update,
 );
-router.post('/:id/delete', loggedin.isUserLogged, recipesController.delete);
+router.get('/:id/delete', loggedin.isUserLogged, recipesController.delete);
 
 module.exports = router;

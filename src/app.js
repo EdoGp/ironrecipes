@@ -66,6 +66,7 @@ app.use('/api/v1/recipes', recipesApiRoutes);
 app.use('/api/v1/messages', messagesApiRoutes);
 
 app.use((req, res, next) => {
+	// res.render('404-page');
 	res.status(404).json({ error: 'page not found' });
 });
 

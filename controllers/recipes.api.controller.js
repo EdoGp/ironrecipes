@@ -106,12 +106,16 @@ exports.delete = async (req, res, next) => {
 	if (mongoose.Types.ObjectId.isValid(req.params.id)) {
 		try {
 			const documents = await Recipe.findByIdAndDelete(req.params.id);
-			res.status(200).json(documents);
+			req.flash('sucess', 'Recipe deleted');
+			res.redirect('/recipes');
+			// res.status(200).json(documents);
 		} catch (error) {
 			console.log(error);
 			next(error);
 		}
 	} else {
-		res.status(401).json({ status: 'failed', message: 'Invalid object id' });
+		req.flash('sucess', 'Recipe deleted');
+		res.redirect('error', 'Recipe could not be deleted');
+		// res.status(401).json({ status: 'failed', message: 'Invalid object id' });
 	}
 };

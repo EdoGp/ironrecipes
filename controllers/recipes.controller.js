@@ -3,6 +3,13 @@ const Recipe = require('./../models/Recipe');
 exports.index = async (req, res, next) => {
 	try {
 		const recipes = await Recipe.find({});
+		if (req.user) {
+			recipes.forEach((recipe) => {
+				if (recipe.creator.toString() == req.user._id.toString()) {
+					recipe.owner = true;
+				}
+			});
+		}
 		res.render('recipes', { recipes });
 	} catch (error) {
 		next(error);
